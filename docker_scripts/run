@@ -1,0 +1,12 @@
+#!/bin/bash
+set -ex
+start_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+build_command="${@:1}"
+image=lr-m/ghidra-plug
+docker run \
+-it \
+-v $PWD:/files \
+-w /files \
+--user $(id -u):$(id -g) \
+--rm $image \
+sh -c "$build_command"

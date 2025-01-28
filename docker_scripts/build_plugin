@@ -1,0 +1,19 @@
+#!/bin/bash
+set -ex
+
+# Check if plugin name is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <plugin-name>"
+    exit 1
+fi
+
+PLUGIN_NAME="$1"
+image=lr-m/ghidra-plug
+
+# Run gradle in the container
+docker run -it \
+    -v $PWD:/files \
+    -w /files \
+    --user $(id -u):$(id -g) \
+    --rm $image \
+    sh -c "cd /files/plugins/$PLUGIN_NAME && gradle"
