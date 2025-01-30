@@ -30,8 +30,8 @@ Run the following to create the docker image (with all dependencies), download &
 
 ```
 cd docker_scripts
-sudo create_docker
-sudo run build_ghidra.sh
+sudo ./create_docker
+sudo ./run ./build_ghidra.sh
 cd ..
 ```
 
