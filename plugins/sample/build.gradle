@@ -15,7 +15,7 @@
  */
 
 // Define Ghidra installation directory
-def ghidraInstallDir = System.getenv("GHIDRA_INSTALL_DIR") ?: "/files/out/ghidra_11.2.1_DEV"
+def ghidraInstallDir = System.getenv("GHIDRA_INSTALL_DIR") ?: "/files/out/ghidra_11.3_DEV"
 
 // Apply Ghidra extension build files from the Ghidra installation
 apply from: "${ghidraInstallDir}/support/buildExtension.gradle"

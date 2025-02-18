@@ -9,7 +9,7 @@
 
 <div align="center">
 
-**Docker image for easily building Ghidra and Ghidra plugins for Ghidra version 11.2.1.**
+**Docker scripts for easily building Ghidra and Ghidra plugins for current Ghidra version.**
 
 </div>
 
@@ -29,15 +29,13 @@ cd ghidra-plug
 Run the following to create the docker image (with all dependencies), download & build Ghidra (will probably take a while):
 
 ```
-cd docker_scripts
-sudo ./create_docker
-sudo ./run ./build_ghidra.sh
-cd ..
+scripts/create_docker
+scripts/run ./scripts/build_ghidra.sh
 ```
 
 ## Plugins
 
-Once the docker is finished and Ghidra is built, you will have something like `/ghidra-plug/out/ghidra_11.2.1_DEV`
+Once the docker is finished and Ghidra is built, you will have something like `/ghidra-plug/out/ghidra_11.3_DEV` (as well as the associated `.zip`)
 
 Add a directory for your plugin in the `/ghidra-plug/plugins` directory. The contents should look something like the included sample:
 
@@ -46,7 +44,11 @@ bin    build.gradle            data  extension.properties  README.md
 build  certification.manifest  dist  Module.manifest       src
 ```
 
-Now once this is set up, you can return to `workdir` and run `sudo docker_scripts/build_plugin *plugin directory name*`, and the plugin should build.
+Now once this is set up, you can return to `workdir` and run `scripts/build_plugin *plugin name*`, and the plugin should build. For the sample example:
+
+```
+scripts/build_plugin sample
+```
 
 The result that can be installed into Ghidra will be located in `/ghidra-plug/plugins/*plugin name*/dist` - congrats you built your first plugin!
 
